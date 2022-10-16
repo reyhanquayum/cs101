@@ -1,0 +1,8 @@
+def retrieve_int(file_handle, num_bytes):
+    num_bytes = bytearray(file_handle.read(num_bytes))
+    # Data in bmp files is in Little Endian format
+    num_bytes.reverse()
+    num_int = 0
+    for byte in num_bytes:
+        num_int = num_int * 256 + byte
+    return num_int
